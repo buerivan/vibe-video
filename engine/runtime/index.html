@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vibe 知识视频 · 渲染页</title>
+<link rel="stylesheet" href="/scene/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "/vendor/three.module.js",
+    "three/addons/": "/vendor/addons/"
+  }
+}
+</script>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <div id="vignette"></div>
+  <div id="hud">
+    <div id="caption"></div>
+    <div id="badge"></div>
+  </div>
+  <script type="module" src="/scene/scene.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# 依赖
+node_modules/
+
+# 渲染产物（成片/帧序列，体积大，不进版本库）
+output/
+
+# 选题工作区（个人内容，按设计不进 git）
+scenes/
+
+# 参考素材（他人视频抽帧等，仅本地学习用）
+reference/
+
+# 系统 / 编辑器
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# 本地环境
+.env
+.env.local

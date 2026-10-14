@@ -1,0 +1,9 @@
+{
+  "name": "warm-amber",
+  "note": "暖褐亮档。一色一义：bg=底色，ink=主文字/证据，dim=次要信息，accent=唯一强调（结论/当前项），orbit=结构与连接。全片只允许这 5 色。",
+  "bg": "#241C14",
+  "ink": "#F0E7D8",
+  "dim": "#A89578",
+  "accent": "#F0B95F",
+  "orbit": "#6B5A42"
+}

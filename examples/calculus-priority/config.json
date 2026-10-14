@@ -1,0 +1,234 @@
+{
+  "_meta": "元示例：微积分优先权之争（公共史学公案，无立场风险）。覆盖组件：object-3d / timeline / split-compare / branch-tree / particles",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "theme": {
+    "name": "warm-amber",
+    "bg": "#241C14",
+    "ink": "#F0E7D8",
+    "dim": "#A89578",
+    "accent": "#F0B95F",
+    "orbit": "#6B5A42"
+  },
+  "camera": {
+    "fov": 40,
+    "position": [
+      0,
+      0,
+      26
+    ],
+    "lookAt": [
+      0,
+      0,
+      0
+    ]
+  },
+  "badge": "#vibe知识大赏 · 本片由代码逐帧渲染生成",
+  "badgeSeconds": 4,
+  "shots": [
+    {
+      "component": "object-3d",
+      "dur": 6,
+      "caption": "一个符号，两个主人。",
+      "camera": {
+        "fov": 40,
+        "position": [
+          0,
+          0,
+          14
+        ],
+        "lookAt": [
+          0,
+          0,
+          0
+        ]
+      },
+      "config": {
+        "shape": "torus",
+        "color": "#F0B95F",
+        "spin": 0.5,
+        "scale": 1
+      }
+    },
+    {
+      "component": "timeline",
+      "dur": 10,
+      "caption": "一六六五年，牛顿写下流数术；一六八四年，莱布尼茨发表微分学。",
+      "config": {
+        "spanYears": [
+          1660,
+          1726
+        ],
+        "tickStep": 10,
+        "highlight": [
+          2
+        ],
+        "events": [
+          {
+            "year": "1665",
+            "label": "牛顿：流数术（未发表）",
+            "side": -1
+          },
+          {
+            "year": "1684",
+            "label": "莱布尼茨：发表微分学论文",
+            "side": 1
+          },
+          {
+            "year": "1704",
+            "label": "牛顿《光学》附录公开流数术",
+            "side": -1
+          },
+          {
+            "year": "1712",
+            "label": "皇家学会裁定优先权归牛顿",
+            "side": 1
+          },
+          {
+            "year": "1716",
+            "label": "莱布尼茨去世，争议未歇",
+            "side": -1
+          }
+        ]
+      }
+    },
+    {
+      "component": "split-compare",
+      "dur": 9,
+      "caption": "英国人用流数，欧洲大陆用微分——同一个数学，两套记号。",
+      "config": {
+        "left": {
+          "title": "牛顿一派",
+          "items": [
+            "流数术（fluxions）",
+            "物理与几何语言",
+            "英国沿用近百年"
+          ]
+        },
+        "right": {
+          "title": "莱布尼茨一派",
+          "items": [
+            "dx / dy 微分记号",
+            "更清晰的代数形式",
+            "欧洲大陆通行至今"
+          ]
+        },
+        "divider": "VS",
+        "verdict": "今天课本里的记号，来自败诉那一方。"
+      }
+    },
+    {
+      "component": "branch-tree",
+      "dur": 9,
+      "caption": "争议的根源：两人几乎同时抵达，路径却完全不同。",
+      "config": {
+        "nodes": [
+          {
+            "x": 0,
+            "y": 3.4,
+            "label": "同一个问题",
+            "kind": "root"
+          },
+          {
+            "x": -4.2,
+            "y": 1.2,
+            "label": "牛顿",
+            "kind": "node"
+          },
+          {
+            "x": 4.2,
+            "y": 1.2,
+            "label": "莱布尼茨",
+            "kind": "node"
+          },
+          {
+            "x": -6.6,
+            "y": -1.4,
+            "label": "切线问题",
+            "kind": "node"
+          },
+          {
+            "x": -1.6,
+            "y": -1.4,
+            "label": "级数展开",
+            "kind": "node"
+          },
+          {
+            "x": 1.6,
+            "y": -1.4,
+            "label": "切线问题",
+            "kind": "node"
+          },
+          {
+            "x": 6.6,
+            "y": -1.4,
+            "label": "积分记号",
+            "kind": "node"
+          },
+          {
+            "x": -4.2,
+            "y": -3.8,
+            "label": "流数术",
+            "kind": "end"
+          },
+          {
+            "x": 4.2,
+            "y": -3.8,
+            "label": "微分学",
+            "kind": "end"
+          }
+        ],
+        "edges": [
+          {
+            "from": 0,
+            "to": 1
+          },
+          {
+            "from": 0,
+            "to": 2
+          },
+          {
+            "from": 1,
+            "to": 3
+          },
+          {
+            "from": 1,
+            "to": 4
+          },
+          {
+            "from": 2,
+            "to": 5
+          },
+          {
+            "from": 2,
+            "to": 6
+          },
+          {
+            "from": 1,
+            "to": 7
+          },
+          {
+            "from": 2,
+            "to": 8
+          }
+        ],
+        "highlightEdges": [
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "component": "particles",
+      "dur": 7,
+      "caption": "谁先谁后，或许没那么重要。",
+      "config": {
+        "mode": "gather",
+        "text": "同 时",
+        "count": 12000,
+        "color": "#F0B95F"
+      }
+    }
+  ]
+}

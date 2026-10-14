@@ -1,0 +1,18 @@
+# 统一换行符，避免 Windows/macOS/Linux 协作时整文件 diff
+* text=auto eol=lf
+
+# 二进制文件不做换行转换
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.mp4  binary
+*.webm binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary
+*.zip  binary
+
+# GitHub 语言统计：把 web 运行时标为 JS 主语言，vendor 归为第三方
+engine/runtime/vendor/* linguist-vendored
+components/**/*.js linguist-detectable

@@ -1,0 +1,25 @@
+{
+  "name": "vibe-video",
+  "version": "0.1.0",
+  "description": "知识视频渲染引擎：确定性逐帧渲染 + 组件库 + ffmpeg 合成（配音归剪映）",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "serve": "node engine/serve.js",
+    "shoot": "node engine/shoot.js",
+    "encode": "node engine/encode.js",
+    "qc": "node engine/qc/inspect.js",
+    "ascii": "node engine/qc/ascii.js",
+    "probe": "node engine/probe.js",
+    "srt": "node engine/mksrt.js",
+    "example": "node engine/serve.js --root examples/calculus-priority"
+  },
+  "dependencies": {
+    "ffmpeg-static": "5.3.0",
+    "pngjs": "7.0.0",
+    "puppeteer-core": "24.10.0",
+    "three": "0.180.0"
+  }
+}
