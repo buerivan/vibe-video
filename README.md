@@ -67,6 +67,16 @@ unset GENIE_TRASH_DIR
 npm install
 ```
 
+**Windows 下 `git fetch` / `git push -u` 报告成功，但 `git status` 显示 `[gone]`**
+同一个 `safe-bin` 环境还会拦截 git 新建 `.git/refs/remotes/<remote>/` 嵌套目录：
+远端分支确实存在，本地却 `git rev-parse origin/main` 报 unknown revision。
+手动回填远程追踪引用即可（不影响远端，只修本地视图）：
+
+```bash
+mkdir -p .git/refs/remotes/origin
+git ls-remote origin refs/heads/main | cut -f1 > .git/refs/remotes/origin/main
+```
+
 ## 浏览器
 
 按顺序探测：`PUPPETEER_EXECUTABLE_PATH` → Chrome → Edge（Windows/macOS/Linux 常见路径）。
