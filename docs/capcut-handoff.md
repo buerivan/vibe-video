@@ -7,8 +7,8 @@
 
 ```bash
 python engine/tts.py --config scenes/<选题>/config.json
-node engine/encode.js --frames output/<选题> --audio output/<选题>/voice/voice.mp3 \
-                      --sub output/<选题>/subtitles.srt --out output/<选题>.mp4
+# ⚠️ 不要给 encode 加 --sub：画面里已烧入 HUD 字幕，再加 SRT 会双层字幕
+node engine/encode.js --frames output/<选题> --audio output/<选题>/voice/voice.mp3 --out output/<选题>.mp4
 ```
 
 - 优点：节奏由声音决定，稳定、可复现、跨平台一致

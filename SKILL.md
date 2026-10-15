@@ -64,12 +64,11 @@ python engine/tts.py --config scenes/<选题>/config.json
 node engine/serve.js --root scenes/<选题>          # 终端 A
 node engine/shoot.js --out output/<选题>            # 终端 B，渲全片
 
-# 3) 字幕（时间轴直接来自真实 dur，无需估算）
+# 3) 字幕文件（供剪映/平台上传用；时间轴来自真实 dur）
 node engine/mksrt.js --config scenes/<选题>/config.json --out output/<选题>/subtitles.srt
 
-# 4) 合成：烧字幕 + 混音轨
-node engine/encode.js --frames output/<选题> --audio output/<选题>/voice/voice.mp3 \
-                      --sub output/<选题>/subtitles.srt --out output/<选题>.mp4
+# 4) 合成：只混音轨。⚠️ 不要加 --sub —— 画面里已烧入 HUD 字幕，再加 SRT 会双层
+node engine/encode.js --frames output/<选题> --audio output/<选题>/voice/voice.mp3 --out output/<选题>.mp4
 ```
 - 分段调试/并行：`node engine/shoot.js --from 12 --dur 6 --fps 15`
 - 无代理/不想用 TTS 时，跳过第 1 步，交付**无声 MP4 + SRT**，配音在剪映完成（见 `docs/capcut-handoff.md`）
