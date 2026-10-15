@@ -1,6 +1,22 @@
-# 剪映对接说明（无声片 → 成片）
+# 配音对接说明
 
-agent 交付的是**无声 MP4 + SRT**，配音在剪映完成。这份文档记录标准动作。
+## 方式 A（推荐）：engine/tts.py 自动配音
+
+`engine/tts.py` 用晓晓音色（zh-CN-XiaoxiaoNeural）为每镜生成语音，并把真实语音时长写回
+`config.json` 的 `shot.dur`，画面/字幕/合成全部反向对齐，**无人工长气口**。详见 `SKILL.md` 阶段 5。
+
+```bash
+python engine/tts.py --config scenes/<选题>/config.json
+node engine/encode.js --frames output/<选题> --audio output/<选题>/voice/voice.mp3 \
+                      --sub output/<选题>/subtitles.srt --out output/<选题>.mp4
+```
+
+- 优点：节奏由声音决定，稳定、可复现、跨平台一致
+- 限制：国内需代理（默认 Clash `http://127.0.0.1:7897`）；edge-tts 音色有限（晓晓/云扬等神经网络音色）
+
+## 方式 B（旧 / 无代理时）：剪映文本朗读
+
+agent 交付**无声 MP4 + SRT**，配音在剪映完成。这份文档记录标准动作。
 
 > ✅ **已实测**（2026-10-14，许鹏用剪映跑通「反驳型人格」第一条）：导入 SRT → 文本朗读 → 得到配音 → 删掉字幕轨，全流程可行。
 > 关键点：**成片里已经烧进了字幕**（字幕是渲染的一部分），所以朗读完必须删掉/隐藏剪映的字幕轨，否则叠成双层。删字幕轨不影响已生成的朗读音频。

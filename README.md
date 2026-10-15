@@ -1,15 +1,17 @@
 # vibe-video
 
 把知识点变成**代码渲染的知识视频**：agent 写代码装配场景 → 无头浏览器逐帧渲染 → FFmpeg 合成。
-交付「无声 MP4 + SRT 字幕」，配音在剪映里用"文本朗读"完成。
+配音默认由 `engine/tts.py` 用晓晓音色自动生成（画面反向对齐声音，无长气口）；也可交付无声片交剪映文本朗读。
 
-零 Python 依赖、零 API key、零云端服务。`git clone && npm i` 就能跑。
+渲染零 API key、零云端服务。`git clone && npm i` 就能出无声片；接 TTS 配音需 `pip install -r engine/requirements.txt`（edge-tts，国内走代理）。
 
 ```bash
 npm install
+python -m pip install -r engine/requirements.txt      # 语音依赖 edge-tts>=7.3.1
 node engine/serve.js --root examples/calculus-priority   # 终端 A：起服务
+python engine/tts.py --config scenes/<选题>/config.json  # 生成晓晓配音 + 写回真实 dur
 node engine/shoot.js --out output/demo                   # 终端 B：渲全片
-node engine/encode.js --frames output/demo --out output/demo.mp4
+node engine/encode.js --frames output/demo --audio output/<选题>/voice/voice.mp3 --out output/demo.mp4
 ```
 
 打开 http://127.0.0.1:5173 可以直接在浏览器里看（可交互预览，空格暂停不管用，刷新即可）。
@@ -29,8 +31,8 @@ node engine/encode.js --frames output/demo --out output/demo.mp4
    （实时录屏做不到这些，所以本引擎不用录屏。）
 2. **配置驱动 + 组件沉淀**：常见母题（时间轴/分叉树/3D 特写/粒子/双栏对比）填 JSON 即可；
    新母题写新组件，过质检后入库，下次就变成填配置。
-3. **agent 不配音**：旁白先行定时间轴（260 字/分钟估算），渲染出无声片 + SRT，
-   丢给剪映"文本朗读"。零成本、音色好、语速停顿的最终控制权在人。
+3. **配音反向对齐**：`engine/tts.py` 先把每镜旁白合成晓晓语音，把真实时长写回 `shot.dur`，
+   画面/字幕/合成跟随声音，杜绝人工长气口。无代理时可退回「无声片 + SRT → 剪映文本朗读」。
 
 ## 目录
 
@@ -40,7 +42,7 @@ components/      组件库（每组件 = index.js + README + 默认配置）
 themes/          主题（一色一义 5 色制）
 examples/        原创可跑示例
 scenes/          你的选题工作区（不进 git）
-docs/            七阶段手册 / 剪映对接 / 质检说明
+docs/            七阶段手册 / 配音对接(TTS·剪映) / 质检说明
 SKILL.md         agent 入口（七阶段工作流 + 红线 + 自检）
 ```
 
@@ -52,6 +54,7 @@ SKILL.md         agent 入口（七阶段工作流 + 红线 + 自检）
 | three | WebGL 场景 |
 | ffmpeg-static | 合成 MP4（自带二进制） |
 | pngjs | 质检时解码 PNG |
+| edge-tts *(Python)* | 自动配音（晓晓等神经网络音色）；需 `pip install -r engine/requirements.txt`，国内走代理 |
 
 Node ≥ 18。
 

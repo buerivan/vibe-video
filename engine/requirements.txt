@@ -1,0 +1,4 @@
+# 语音功能依赖（edge-tts）。
+# 注意：必须 >= 7.3.1 —— 该版本起含 v2 GEC token 算法，修复此前
+# "WSServerHandshakeError: 403 Invalid response status" 的握手被拒问题。
+edge-tts>=7.3.1
